@@ -8,11 +8,18 @@
 <body>
 
 
-<div>我是javaScript</div>
+<div onclick="alert('我是javaScript,点我弹窗')">我是javaScript,点我弹窗</div>
 
-<button onclick="callAndroid()">
 
-    我是网页的按钮
+
+<button onclick="callAndroid1()">
+
+    我是网页的按钮,点击调用Android代码1
+
+</button>
+<button onclick="callAndroid2()">
+
+    我是网页的按钮,点击调用Android代码2
 
 </button>
 
@@ -21,8 +28,11 @@
     var android = Android_Object_Android2Js;
 
 
-    var callAndroid = function () {
+    var callAndroid1 = function () {
         android.helloAndroid("我是来自己js的代码")
+    };
+    var callAndroid2 = function () {
+        document.location = "js://webview?arg1=111&arg2=222";
     };
 
 

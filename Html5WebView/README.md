@@ -12,3 +12,5 @@ WebView在现在的项目中使用的频率应该还是非常高的。我个人�
 示例图（全屏的网页）：
 
 ![](https://github.com/Wing-Li/Html5WebView/blob/master/img/pic.png)
+
+http://blog.csdn.net/carson_ho/article/details/64904691
