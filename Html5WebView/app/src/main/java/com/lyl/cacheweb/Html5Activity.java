@@ -9,9 +9,12 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
+import android.webkit.ValueCallback;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -26,7 +29,7 @@ public class Html5Activity extends Activity {
     private SeekBar mSeekBar;
     private Html5WebView mWebView;
 
-    @SuppressLint("JavascriptInterface")
+    @SuppressLint("AddJavascriptInterface")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +49,34 @@ public class Html5Activity extends Activity {
         mLayout.addView(mWebView);
         mWebView.setWebChromeClient(new Html5WebChromeClient());
         mWebView.loadUrl(mUrl);
-        mWebView.addJavascriptInterface(new Android2Js(), "Android_Object_Android2Js");//AndroidtoJS类对象映射到js的test对象
+
+        //  js代码调用
+        //  var androidObjectName = Android_Object_JsObject;
+        //
+        //  var callAndroid1 = function () {
+        //      androidObjectName.helloAndroid("我是来自js的代码")
+        //  };
+        mWebView.addJavascriptInterface(new JsObject(), "Android_Object_JsObject");
+        mWebView.addJavascriptInterface(this, "Android_Object_Html5Activity");
+    }
+
+    @JavascriptInterface
+    public void beInvokedByJavascript(String msg) {
+        Log.i("beInvokedByJavascript", "beInvokedByJavascript: " + msg);
+        Toast.makeText(Html5Activity.this, "beInvokedByJavascript" + msg, Toast.LENGTH_SHORT).show();
+    }
+
+    public void androidInvokedJS(View view) {
+        String jsmethod = "javascript:javaCallJS(\'我是来自安卓的补充文字\')";
+        //   android 4.4 开始使用evaluateJavascript调用js函数 ValueCallback获得调用js函数的返回值
+        //   4.4 之前还得通过 JavascriptInterface 来回调
+        mWebView.evaluateJavascript(jsmethod, new ValueCallback<String>() {
+
+            @Override
+            public void onReceiveValue(String value) {
+                Log.d("MainActivity", "回调  onReceiveValue value=" + value);
+            }
+        });
     }
 
     // 继承 WebView 里面实现的基类
@@ -62,8 +92,8 @@ public class Html5Activity extends Activity {
 
         @Override
         public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
-            Toast.makeText(Html5Activity.this, "onjsAlert", Toast.LENGTH_SHORT).show();
-            Log.i("Html5WebChromeClient", "onjsAlert");
+            Toast.makeText(Html5Activity.this, "我是javaScript,点我弹窗", Toast.LENGTH_SHORT).show();
+            Log.i("Html5WebChromeClient", "我是javaScript,点我弹窗");
             return true;
         }
     }

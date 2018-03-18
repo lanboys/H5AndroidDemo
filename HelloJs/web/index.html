@@ -8,30 +8,47 @@
 <body>
 
 
-<p> <a href="meizi.html" > 去看妹子 </a></p>
+<p><a href="meizi.html"> 去看妹子 </a></p>
 
 <div onclick="alert('我是javaScript,点我弹窗')">我是javaScript,点我弹窗</div>
 
+<button onclick="callAndroid0()">
+    我是网页的按钮,点击调用Android代码0
+</button>
 <button onclick="callAndroid1()">
     我是网页的按钮,点击调用Android代码1
 </button>
 <button onclick="callAndroid2()">
-
-    我是网页的按钮,点击调用Android代码2
+    我通过协议调用Android代码2
 </button>
-
+<br>
+<p>
+    我在等安卓补充后面文字:<span id="span_javamsg"></span>
+</p>
 
 <script>
-    var android = Android_Object_Android2Js;
+    var androidObjectName1 = window.Android_Object_JsObject;
+    var androidObjectName2 = window.Android_Object_Html5Activity;
 
 
+    var span_javamsg = document.getElementById("span_javamsg");
+
+    var callAndroid0 = function () {
+        androidObjectName1.helloAndroid("我是来自js的代码")
+    };
     var callAndroid1 = function () {
-        android.helloAndroid("我是来自己js的代码")
+        androidObjectName2.beInvokedByJavascript("我是来自js的代码")
     };
     var callAndroid2 = function () {
         document.location = "js://webview?arg1=111&arg2=222";
     };
-
+    var javaCallJS = function (msg) {
+        span_javamsg.innerHTML = msg;
+        //   android 4.4 开始使用evaluateJavascript调用js函数 ValueCallback获得调用js函数的返回值
+        //   4.4 之前还得通过 JavascriptInterface 来回调
+        // window.JSCallJava.onJavaCallJSResult('true');
+        return true;
+    };
 
 </script>
 

@@ -10,12 +10,21 @@
         android:id="@+id/web_sbr"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:progressDrawable="@drawable/po_seekbar"
         android:focusable="false"
+        android:progressDrawable="@drawable/po_seekbar"
         android:thumb="@null"/>
 
     <FrameLayout
         android:id="@+id/web_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="androidInvokedJS"
+        android:text="我是安卓按钮，我调js"/>
+
+
 </LinearLayout>

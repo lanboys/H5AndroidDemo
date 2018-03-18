@@ -92,7 +92,6 @@ public class Html5WebView extends WebView {
      * 实现一个基础的 WebViewClient ，如果有更多的需要，直接继承它
      */
     static class BaseWebViewClient extends WebViewClient {
-
         /**
          * 多页面在同一个WebView中打开，就是不新建activity或者调用系统浏览器打开
          *
@@ -100,7 +99,6 @@ public class Html5WebView extends WebView {
          * @param url     WebView 内地址
          * @return true  WebView 不会自动加载 可以自动手动 WebView.loadUrl(url) 进行加载  false WebView 会自动加载
          */
-
         @Override
         public boolean shouldOverrideUrlLoading(WebView webView, String url) {
             //http://blog.csdn.net/carson_ho/article/details/64904691

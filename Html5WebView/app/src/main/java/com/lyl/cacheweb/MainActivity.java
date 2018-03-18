@@ -18,6 +18,8 @@ public class MainActivity extends Activity {
     private Button mBtnSreach;
 
     private String mUrl;
+    //private String mInitUrl = "http://192.168.0.103:8085/index.html";
+    private String mInitUrl = "https://h5.baogongyoucai.com/activity-315.php?isLogin=0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class MainActivity extends Activity {
     private void initViews() {
         mTxtHost = (TextView) findViewById(R.id.host);
         mEdtUrl = (EditText) findViewById(R.id.edt_url);
+        mEdtUrl.setText(mInitUrl);
         mBtnSreach = (Button) findViewById(R.id.btn_sreach);
     }
 
@@ -65,7 +68,6 @@ public class MainActivity extends Activity {
             }
         });
     }
-
 
     private void sreachUrl() {
         String edt = mEdtUrl.getText().toString().trim();

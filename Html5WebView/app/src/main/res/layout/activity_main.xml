@@ -28,8 +28,7 @@
             android:hint="请输入您的网址"
             android:imeActionLabel="搜索"
             android:imeOptions="actionSearch"
-            android:singleLine="true"
-            android:text="http://192.168.1.12:8085/index.html"/>
+            android:singleLine="true"/>
 
         android:text="http://cyh5.juzhongke.gdysj.com.cn/shop/index?shopId=12"
     </LinearLayout>
