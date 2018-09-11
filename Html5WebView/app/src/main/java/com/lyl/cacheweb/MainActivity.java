@@ -18,8 +18,9 @@ public class MainActivity extends Activity {
     private Button mBtnSreach;
 
     private String mUrl;
-    //private String mInitUrl = "http://192.168.0.103:8085/index.html";
-    private String mInitUrl = "https://h5.baogongyoucai.com/activity-315.php?isLogin=0";
+    private String mInitUrl = "http://192.168.0.111:8080/index.html";
+    //private String mInitUrl = "https://www.baidu.com/";
+    //private String mInitUrl = "https://h5.baogongyoucai.com/product_details.php?id=525";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -8,7 +8,7 @@
 <body>
 
 
-<p><a href="meizi.html"> 去看妹子 </a></p>
+<!--<p><a href="meizi.html"> 去看妹子 </a></p>-->
 
 <div onclick="alert('我是javaScript,点我弹窗')">我是javaScript,点我弹窗</div>
 
@@ -25,7 +25,8 @@
 <p>
     我在等安卓补充后面文字:<span id="span_javamsg"></span>
 </p>
-
+<script src="jquery-2.1.4.min.js"></script>
+<!--<script src="client-javascript-bridge.js"></script>-->
 <script>
     var androidObjectName1 = window.Android_Object_JsObject;
     var androidObjectName2 = window.Android_Object_Html5Activity;
@@ -49,6 +50,19 @@
         // window.JSCallJava.onJavaCallJSResult('true');
         return true;
     };
+
+    function renderNotice(title,pushTime,content){
+        document.body.innerHTML = content;
+        // $('.title').text(title);
+        // $('.date').text(pushTime);
+        // $('.content').text(content);
+        // $('.container').show();
+    }
+
+    function sendLoginStatus(token){
+        document.body.innerHTML = token;
+    }
+
 
 </script>
 

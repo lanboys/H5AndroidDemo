@@ -1,26 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--https://blog.csdn.net/qq_28057577/article/details/52225870-->
+    <!--https://blog.csdn.net/liwenyang11111111111/article/details/70144916-->
+
     <item
         android:id="@android:id/background"
         android:drawable="@drawable/seekbar_bg"/>
+
+
+    <!--设置第二进度，通常用做显示视频等得缓冲效果-->
+
     <item android:id="@android:id/secondaryProgress">
+
         <scale android:scaleWidth="100%">
             <selector>
                 <item android:state_enabled="false">
                     <color android:color="@android:color/transparent"/>
                 </item>
-                <item android:drawable="@drawable/seekbar_progress"/>
+                <item android:drawable="@drawable/seekbar_sec_progress"/>
             </selector>
         </scale>
     </item>
+
+
     <item android:id="@android:id/progress">
-        <scale android:scaleWidth="100%">
+        <!--<scale android:scaleWidth="100%">-->
+        <clip>
             <selector>
                 <item android:state_enabled="false">
                     <color android:color="@android:color/transparent"/>
                 </item>
                 <item android:drawable="@drawable/seekbar_progress"/>
             </selector>
-        </scale>
+        </clip>
+        <!--</scale>-->
     </item>
+
+
 </layer-list>

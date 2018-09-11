@@ -9,10 +9,19 @@
     <SeekBar
         android:id="@+id/web_sbr"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:focusable="false"
+        android:layout_height="20dp"
+        android:secondaryProgress="50"
         android:progressDrawable="@drawable/po_seekbar"
-        android:thumb="@null"/>
+    />
+        <!--android:focusable="false"-->
+
+        <!--android:thumb="@null"-->
+
+    <!--android:secondaryProgress[integer] 设置第二进度，通常用做显示视频等得缓冲效果-->
+    <!--android:thumb[drawable]设置滑块的图样-->
+    <!--android:progressDrawable[drawable]设置进度条的图样-->
+    <!--android:thumbOffset="0dip"   即可实现thumb滑块不被覆盖-->
+
 
     <FrameLayout
         android:id="@+id/web_layout"

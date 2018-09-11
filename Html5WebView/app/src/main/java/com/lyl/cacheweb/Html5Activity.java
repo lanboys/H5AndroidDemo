@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -67,16 +68,23 @@ public class Html5Activity extends Activity {
     }
 
     public void androidInvokedJS(View view) {
-        String jsmethod = "javascript:javaCallJS(\'我是来自安卓的补充文字\')";
+        String jsmethod = "javascript:renderNotice(\'我是来自安卓的补充文字\')";
+        //  https://blog.csdn.net/carson_ho/article/details/64904691
         //   android 4.4 开始使用evaluateJavascript调用js函数 ValueCallback获得调用js函数的返回值
         //   4.4 之前还得通过 JavascriptInterface 来回调
-        mWebView.evaluateJavascript(jsmethod, new ValueCallback<String>() {
 
-            @Override
-            public void onReceiveValue(String value) {
-                Log.d("MainActivity", "回调  onReceiveValue value=" + value);
-            }
-        });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            mWebView.evaluateJavascript(jsmethod, new ValueCallback<String>() {
+                @Override
+                public void onReceiveValue(String value) {
+                    //此处为 js 返回的结果
+                    Log.d("MainActivity", "回调  onReceiveValue value=" + value);
+
+                }
+            });
+        } else {
+            mWebView.loadUrl(jsmethod);
+        }
     }
 
     // 继承 WebView 里面实现的基类
